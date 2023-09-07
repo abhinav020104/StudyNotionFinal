@@ -71,6 +71,7 @@ function ReviewSlider() {
                       </h2>
                     </div>
                   </div>
+                  <div className="w-[100px] h-[100px]">
                   <p className="font-medium text-richblack-25">
                     {review?.review.split(" ").length > truncateWords
                       ? `${review?.review
@@ -92,6 +93,7 @@ function ReviewSlider() {
                       emptyIcon={<FaStar />}
                       fullIcon={<FaStar />}
                     />
+                  </div>
                   </div>
                 </div>
               </SwiperSlide>
