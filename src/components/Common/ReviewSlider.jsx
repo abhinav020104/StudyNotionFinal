@@ -53,7 +53,7 @@ function ReviewSlider() {
           {reviews.map((review, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="flex  gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
+                <div className="flex  flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25 w-[100px] h-[100px]">
                   <div className="flex items-center gap-4">
                     <img
                       src={
@@ -71,7 +71,7 @@ function ReviewSlider() {
                       </h2>
                     </div>
                   </div>
-                  <div className="w-[100px] h-[100px]">
+                  <div>
                   <p className="font-medium text-richblack-25">
                     {review?.review.split(" ").length > truncateWords
                       ? `${review?.review
