@@ -62,7 +62,12 @@ function Navbar() {
   }, [])
 
   // console.log("sub links", subLinks)
-
+  useEffect(()=>{
+    if(clicked)
+    {
+      setClick(false);
+    }
+  },[location.pathname])
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname)
   }
