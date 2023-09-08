@@ -5,7 +5,7 @@ import { resetCart } from "../../slices/cartSlice"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiConnector"
 import { endpoints } from "../apis"
-
+import { ACCOUNT_TYPE } from "../../utils/constants"
 const {
   SENDOTP_API,
   SIGNUP_API,
@@ -106,7 +106,8 @@ export function login(email, password, navigate) {
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
       dispatch(setUser({ ...response.data.user, image: userImage }))
       localStorage.setItem("token", JSON.stringify(response.data.token))
-      if(response.data.user.accountType === "Student" ){ navigate("/dashboard/enrolled-courses")} 
+      if(response.data.user.accountType === ACCOUNT_TYPE.STUDENT )
+      { navigate("/dashboard/enrolled-courses")} 
       else
       {
         navigate("/dashboard/my-courses")
