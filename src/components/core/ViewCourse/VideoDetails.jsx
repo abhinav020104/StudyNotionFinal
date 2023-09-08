@@ -202,7 +202,7 @@ const VideoDetails = () => {
                   customClasses="text-xl max-w-max px-4 mx-auto"
                 />
               )}
-              <IconBtn
+              {/* <IconBtn
                 disabled={loading}
                 onclick={() => {
                   if (playerRef?.current) {
@@ -213,7 +213,7 @@ const VideoDetails = () => {
                 }}
                 text="Rewatch"
                 customClasses="text-xl max-w-max px-4 mx-auto mt-2"
-              />
+              /> */}
               <div className="mt-10 flex min-w-[250px] justify-center gap-x-4 text-xl">
                 {!isFirstVideo() && (
                   <button
