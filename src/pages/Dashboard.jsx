@@ -17,7 +17,7 @@ function Dashboard() {
 
   return (
     <div className="relative flex min-h-[calc(100vh-3.5rem)]">
-      <div className="block sm:hidden">
+      <div className="block sm:hidden md:hidden">
       <Sidebar />
       </div>
       <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
