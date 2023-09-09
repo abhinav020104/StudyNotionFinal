@@ -450,7 +450,7 @@ exports.deleteCourse = async (req, res) => {
     if (!course) {
       return res.status(404).json({ message: "Course not found" })
     }
-    const categoryId = mongoose.Types.ObjectId(course.category);
+    const categoryId = course.category
     const updatedCategory = await Category.findByIdAndDelete(categoryId , {$pull : {courses: courseId}})
     // Unenroll students from the course
     const studentsEnrolled = course.studentsEnroled
