@@ -106,12 +106,12 @@ export function login(email, password, navigate) {
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
       dispatch(setUser({ ...response.data.user, image: userImage }))
       localStorage.setItem("token", JSON.stringify(response.data.token))
-      if(response.data.user.accountType === ACCOUNT_TYPE.STUDENT )
-      { navigate("/dashboard/enrolled-courses")} 
-      else
-      {
-        navigate("/dashboard/my-courses")
-      }
+      const type = response.data.user.accountType
+      console.log(type);
+      type === ACCOUNT_TYPE.STUDENT ? 
+        (navigate("/dashboard/enrolled-courses"))
+      :
+        (navigate("/dashboard/add-course"))
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
       toast.error("Login Failed")
