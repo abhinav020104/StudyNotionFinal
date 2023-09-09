@@ -6,6 +6,7 @@ const User = require("../models/User")
 const { uploadImageToCloudinary } = require("../utils/imageUploader")
 const CourseProgress = require("../models/CourseProgress")
 const { convertSecondsToDuration } = require("../utils/secToDuration")
+const mongoose = require("mongoose");
 // Function to create a new course
 exports.createCourse = async (req, res) => {
   try {
@@ -449,7 +450,8 @@ exports.deleteCourse = async (req, res) => {
     if (!course) {
       return res.status(404).json({ message: "Course not found" })
     }
-
+    const categoryId = mongoose.Types.ObjectId(course.category);
+    const updatedCategory = await Category.findByIdAndDelete(categoryId , {$pull : {courses: courseId}})
     // Unenroll students from the course
     const studentsEnrolled = course.studentsEnroled
     for (const studentId of studentsEnrolled) {
