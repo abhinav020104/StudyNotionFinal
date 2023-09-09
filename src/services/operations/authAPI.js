@@ -111,7 +111,7 @@ export function login(email, password, navigate) {
       type === ACCOUNT_TYPE.STUDENT ? 
         (navigate("/dashboard/enrolled-courses"))
       :
-        (navigate("/dashboard/add-course"))
+        (navigate("/dashboard/my-courses"))
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
       toast.error("Login Failed")
