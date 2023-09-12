@@ -9,7 +9,7 @@ import { apiConnector } from "../../services/apiConnector"
 import { categories } from "../../services/apis"
 import { ACCOUNT_TYPE } from "../../utils/constants"
 import ProfileDropdown from "../core/Auth/ProfileDropdown"
-
+import {RxHamburgerMenu} from "react-icons/rx"
 // const subLinks = [
 //   {
 //     title: "Python",
@@ -81,7 +81,7 @@ function Navbar() {
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="Logo" width={160} height={32} loading="lazy" />
+          <img src={logo} alt="Logo" width={160} height={32} loading="lazy" className="ml-5"/>
         </Link>
         {/* Navigation links */}
         <nav className="hidden md:block">
@@ -173,8 +173,8 @@ function Navbar() {
           )}
           {token !== null && <ProfileDropdown />}
         </div>
-        <button onClick={ClickHandler}  className="mr-4 md:hidden">
-          <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
+        <button onClick={ClickHandler}  className="mr-4 md:hidden text-richblack-5">
+          <RxHamburgerMenu fontSize={30} />
         </button>
         <div className={`h-screen  ${clicked ? "block" : "hidden"} bg-richblack-900 absolute top-11 z-30 left-0 right-0 bottom-0 `}>
 
@@ -238,6 +238,9 @@ function Navbar() {
               </li>
             ))}
           </ul>
+          <Link to="/dashboard/enrolled-courses"><div className="text-richblack-25">
+            Enrolled Courses
+          </div></Link>
           <div className="flex flex-col gap-5">
           {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
