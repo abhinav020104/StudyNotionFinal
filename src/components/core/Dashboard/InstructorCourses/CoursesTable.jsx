@@ -238,6 +238,7 @@ export default function CoursesTable({ courses, setCourses }) {
                 </div>
             ))
           }
+      {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
           </div>
 </div>
   )
