@@ -25,7 +25,7 @@ export default function RenderSteps() {
 
   return (
     <>
-      <div className="relative mb-2 flex w-[80%] justify-center mx-auto">
+      <div className="relative mb-2 flex w-[80%]  mx-auto">
         {steps.map((item) => (
           <>
             <div
