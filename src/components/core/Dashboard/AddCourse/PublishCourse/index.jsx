@@ -64,7 +64,7 @@ export default function PublishCourse() {
   }
 
   return (
-    <div className="rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-3 mx-auto overflow-x-hidden">
+    <div className="rounded-md border-[1px] border-richblack-700 bg-richblack-800  mx-auto overflow-x-hidden">
       <p className="text-2xl font-semibold text-richblack-5">
         Publish Settings
       </p>
