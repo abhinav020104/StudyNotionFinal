@@ -25,11 +25,11 @@ export default function RenderSteps() {
 
   return (
     <>
-      <div className="relative mb-2 flex w-full justify-center">
+      <div className="relative mb-2 flex w-[80%] justify-center mx-auto">
         {steps.map((item) => (
           <>
             <div
-              className="flex flex-col items-center "
+              className="flex flex-col items-center mx-auto"
               key={item.id}
             >
               <button
@@ -70,7 +70,7 @@ export default function RenderSteps() {
               
               <p
                 className={`text-sm ${
-                  step >= item.id ? "text-richblack-5" : "text-richblack-500"
+                  step >= item.id ? "text-richblack-5" : "text-richblack-500 "
                 }`}
               >
                 {item.title}
