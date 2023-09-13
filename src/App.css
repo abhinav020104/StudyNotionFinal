@@ -12,6 +12,7 @@ body {
 * {
   scrollbar-width: auto;
   scrollbar-color: #afb2bf;
+  user-select: none;
 }
 
 /* Chrome, Edge, and Safari */

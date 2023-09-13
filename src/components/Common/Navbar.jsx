@@ -173,10 +173,10 @@ function Navbar() {
           )}
           {token !== null && <ProfileDropdown />}
         </div>
-        <button onClick={ClickHandler}  className="mr-4 md:hidden text-richblack-5">
+        <button onClick={ClickHandler}  className="mr-4 md:hidden text-richblack-5 ">
           <RxHamburgerMenu fontSize={30} />
         </button>
-        <div className={`h-screen  ${clicked ? "block" : "hidden"} bg-richblack-900 absolute top-11 z-30 left-0 right-0 bottom-0 `}>
+        <div className={`h-screen  ${clicked ? "block" : "hidden"} bg-richblack-900 absolute top-11 z-40 left-0 right-0 bottom-0 duration-500`}>
 
           <div className="flex flex-col w-full items-center gap-10 text-center mt-12">
             <ul className=" text-richblack-25 w-full flex flex-col items-center gap-10">
@@ -238,11 +238,13 @@ function Navbar() {
               </li>
             ))}
           </ul>
-          <Link to="/dashboard/enrolled-courses"><div className="text-richblack-25">
-            Enrolled Courses
-          </div></Link>
+        <div>
+          {
+            user ? (user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR ? (<Link to="dashboard/enrolled-courses"><div className="text-richblack-5">Enrolled Courses</div></Link>) : (<div className="flex flex-col gap-5"><Link to="dashboard/instructor"><div className="text-richblack-5">Instructor Dashboard</div></Link> <Link to="dashboard/my-courses"><div className="text-richblack-5">My Courses</div></Link></div>)) : (<div></div>)
+          }
+        </div>
           <div className="flex flex-col gap-5">
-          {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
+          {/* {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
               <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
               {totalItems > 0 && (
@@ -251,7 +253,7 @@ function Navbar() {
                 </span>
               )}
             </Link>
-          )}
+          )} */}
           {token === null && (
             <Link to="/login">
               <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">

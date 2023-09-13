@@ -55,8 +55,8 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
       title="back">
         <RxHamburgerMenu size={30}></RxHamburgerMenu>
       </div>
-      <div className={`flex h-[calc(100vh-3.5rem)] w-[320px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800  ${sba ? "flex " : "hidden"} transition-all duration-200`}>
-        <div className="mx-5 flex flex-col items-start justify-between gap-2 gap-y-4 border-b border-richblack-600 py-5 text-lg font-bold text-richblack-25">
+      <div className={`flex h-[calc(100vh-3.5rem)] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800  ${sba ? "w-[320px] flex " : "w-[0px]"} transition-all duration-300`}>
+        <div className={`mx-5  flex-col items-start justify-between gap-2 gap-y-4 border-b border-richblack-600 py-5 text-lg font-bold text-richblack-25 ${sba ? "flex" : "hidden"}`}>
           <div className="flex w-full items-center justify-between ">
 
             <IconBtn

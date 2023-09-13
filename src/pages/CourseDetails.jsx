@@ -124,7 +124,7 @@ function CourseDetails() {
       </div>
     )
   }
-
+  const course=response?.data?.courseDetails
   return (
     <>
       <div className={`relative w-full bg-richblack-800`}>
@@ -174,10 +174,19 @@ function CourseDetails() {
               <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
                 Rs. {price}
               </p>
-              <button className="yellowButton" onClick={handleBuyCourse}>
-                Buy Now
-              </button>
-              <button className="blackButton">Add to Cart</button>
+              <button
+              className="yellowButton"
+              onClick={
+                user && course?.studentsEnroled.includes(user?._id)
+                  ? () => navigate("/dashboard/enrolled-courses")
+                  : handleBuyCourse
+              }
+            >
+              {user && course?.studentsEnroled.includes(user?._id)
+                ? "Go To Course"
+                : "Buy Now"}
+            </button>
+              {/* <button className="blackButton">Add to Cart</button> */}
             </div>
           </div>
           {/* Courses Card */}

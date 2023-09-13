@@ -40,16 +40,17 @@ export default function CoursesTable({ courses, setCourses }) {
   // console.log("All Course ", courses)
 
   return (
-    <>
-      <Table className="rounded-xl border border-richblack-800 ">
-        <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
+  <div>
+  <div className="hidden md:block">
+      <Table className="rounded-xl border border-richblack-800 table-fixedl">
+        <Thead className="">
+          <Tr className="hidden gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2 flex-col gap-4 md:flex-row md:flex">
+            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100 flex-col">
               Courses
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            {/* <Th className="text-left text-sm font-medium uppercase text-richblack-100">
               Duration
-            </Th>
+            </Th> */}
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">
               Price
             </Th>
@@ -61,7 +62,7 @@ export default function CoursesTable({ courses, setCourses }) {
         <Tbody>
           {courses?.length === 0 ? (
             <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
+              <Td className="py-10 text-center text-2xl font-medium text-richblack-100 ">
                 No courses found
                 {/* TODO: Need to change this state */}
               </Td>
@@ -70,13 +71,13 @@ export default function CoursesTable({ courses, setCourses }) {
             courses?.map((course) => (
               <Tr
                 key={course._id}
-                className="flex gap-x-10 border-b border-richblack-800 px-6 py-8"
+                className="flex gap-x-10 border-b border-richblack-800 px-6 py-8 flex-col md:flex-row "
               >
-                <Td className="flex flex-1 gap-x-4">
+                <Td className="flex flex-1 gap-x-4 ">
                   <img
                     src={course?.thumbnail}
                     alt={course?.courseName}
-                    className="h-[148px] w-[220px] rounded-lg object-cover"
+                    className="h-[148px] w-[220px] rounded-lg object-cover hidden md:block"
                   />
                   <div className="flex flex-col justify-between">
                     <p className="text-lg font-semibold text-richblack-5">
@@ -109,9 +110,9 @@ export default function CoursesTable({ courses, setCourses }) {
                     )}
                   </div>
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100">
+                {/* <Td className="text-sm font-medium text-richblack-100">
                   2hr 30min
-                </Td>
+                </Td> */}
                 <Td className="text-sm font-medium text-richblack-100">
                   ₹{course.price}
                 </Td>
@@ -154,7 +155,90 @@ export default function CoursesTable({ courses, setCourses }) {
           )}
         </Tbody>
       </Table>
+
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
-    </>
+    </div>
+          <div className="md:hidden flex flex-col text-richblack-5 items-center gap-4 border border-richblack-100 px-3 py-3 rounded-md">
+          {
+            courses.map((course)=>(
+              <div key={course._id} className="flex flex-col gap-5 items-center border-b border-richblack-5 w-full ">
+                      <img
+                    src={course?.thumbnail}
+                    alt={course?.courseName}
+                    className="h-[148px] w-[220px] rounded-lg object-cover "
+                  />
+                      <p className="">
+                        {course.courseName}
+                      </p>
+                      {/* <p className="">
+                        {course.courseDescription.split(" ").length >
+                        TRUNCATE_LENGTH
+                          ? course.courseDescription
+                              .split(" ")
+                              .slice(0, TRUNCATE_LENGTH)
+                              .join(" ") + "..."
+                          : course.courseDescription}
+                      </p> */}
+                      <p className="">
+                        Created: {formatDate(course.createdAt)}
+                      </p>
+                      {course.status === COURSE_STATUS.DRAFT ? (
+                        <p className="">
+                          <HiClock size={14} />
+                          Drafted
+                        </p>
+                      ) : (
+                        <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
+                          <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
+                            <FaCheck size={8} />
+                          </div>
+                          Published
+                        </p>
+                      )}
+                      <div className="flex mb-5 gap-5">
+                      <button
+                    disabled={loading}
+                    onClick={() => {
+                      navigate(`/dashboard/edit-course/${course._id}`)
+                    }}
+                    title="Edit"
+                    className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300"
+                  >
+                    <div className="flex gap-4 bg-yellow-50 text-black font-bold rounded-xl px-2 py-1">
+                      Edit
+                      <FiEdit2 size={20} />
+                    </div>
+                  </button>
+                  <button
+                    disabled={loading}
+                    onClick={() => {
+                      setConfirmationModal({
+                        text1: "Do you want to delete this course?",
+                        text2:
+                          "All the data related to this course will be deleted",
+                        btn1Text: !loading ? "Delete" : "Loading...  ",
+                        btn2Text: "Cancel",
+                        btn1Handler: !loading
+                          ? () => handleCourseDelete(course._id)
+                          : () => {},
+                        btn2Handler: !loading
+                          ? () => setConfirmationModal(null)
+                          : () => {},
+                      })
+                    }}
+                    title="Delete"
+                    className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]"
+                  >
+                    <div className="flex gap-4 bg-yellow-50 text-black font-bold rounded-xl px-2 py-1 items-center">
+                      <p>Delete</p>
+                    <RiDeleteBin6Line size={20} />
+                    </div>
+                  </button>
+                      </div>
+                </div>
+            ))
+          }
+          </div>
+</div>
   )
 }

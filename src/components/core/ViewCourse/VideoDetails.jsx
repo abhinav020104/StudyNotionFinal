@@ -169,7 +169,7 @@ const VideoDetails = () => {
   }
 
   return (
-    <div className="flex flex-col gap-5 text-white">
+    <div className="flex flex-col gap-5 text-white md:items-center md:mt-14">
       {!videoData ? (
         <img
           src={previewSource}
@@ -177,7 +177,8 @@ const VideoDetails = () => {
           className="h-full w-full rounded-md object-cover"
         />
       ) : (
-        <Player
+        <div className="md:w-[1080px] md:mx-auto">
+          <Player
           ref={playerRef}
           aspectRatio="16:9"
           playsInline
@@ -237,6 +238,7 @@ const VideoDetails = () => {
             </div>
           )}
         </Player>
+        </div>
       )}
 
       <h1 className="mt-4 text-3xl font-semibold">{videoData?.title}</h1>

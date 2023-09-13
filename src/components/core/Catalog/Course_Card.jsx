@@ -21,11 +21,11 @@ function Course_Card({ course, Height }) {
     <>
       <Link to={`/courses/${course._id}`}>
         <div className="">
-          <div className="rounded-lg">
+          <div className="rounded-lg mx-auto w-[90%]">
             <img
               src={course?.thumbnail}
               alt="course thumnail"
-              className={`${Height} w-full rounded-xl object-cover `}
+              className={`${Height}  rounded-xl object-fill `}
             />
           </div>
           <div className="flex flex-col gap-2 px-1 py-3">
