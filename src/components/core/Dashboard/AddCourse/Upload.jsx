@@ -31,10 +31,10 @@ export default function Upload({
     }
   }
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: !video
-      ? { "image/*": [".jpeg", ".jpg", ".png"] }
-      : { "video/*": [".mp4"] },
+  const { getRootProps, getInputProps, isDragActive} = useDropzone({
+    acceptedFiles: !video
+      ? { "image/*": ["jpeg", "jpg", "png"] }
+      : { "video/*": ["mp4"] },
     onDrop,
   })
 
