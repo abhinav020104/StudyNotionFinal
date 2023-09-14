@@ -18,8 +18,11 @@ export default function ChipInput({
   const { editCourse, course } = useSelector((state) => state.course)
 
   // Setting up state for managing chips array
-  const [chips, setChips] = useState([])
-
+  const [chips, setChips] = useState([]);
+  const[tagname , setTag] = useState("");
+  function changeHandler(event){
+    setTag(event.target.value);
+  }
   useEffect(() => {
     if (editCourse) {
       // console.log(course)
@@ -35,20 +38,31 @@ export default function ChipInput({
   }, [chips])
 
   // Function to handle user input when chips are added
-  const handleKeyDown = (event) => {
-    // Check if user presses "Enter" or ","
-    if (event.key === "Enter" || event.key === ",") {
-      // Prevent the default behavior of the event
-      event.preventDefault()
-      // Get the input value and remove any leading/trailing spaces
-      const chipValue = event.target.value.trim()
-      // Check if the input value exists and is not already in the chips array
-      if (chipValue && !chips.includes(chipValue)) {
-        // Add the chip to the array and clear the input
-        const newChips = [...chips, chipValue]
-        setChips(newChips)
-        event.target.value = ""
-      }
+  // const handleKeyDown = (event) => {
+  //   // Check if user presses "Enter" or ","
+  //   if (event.key === "Enter" || event.key === ",") {
+  //     // Prevent the default behavior of the event
+  //     event.preventDefault()
+  //     // Get the input value and remove any leading/trailing spaces
+  //     const chipValue = event.target.value.trim()
+  //     // Check if the input value exists and is not already in the chips array
+  //     if (chipValue && !chips.includes(chipValue)) {
+  //       // Add the chip to the array and clear the input
+  //       const newChips = [...chips, chipValue]
+  //       setChips(newChips)
+  //       event.target.value = ""
+  //     }
+  //   }
+  // }
+
+  function ClickHandler(event){
+    event.preventDefault();
+    const chipValue = tagname.trim();
+    if (chipValue && !chips.includes(chipValue)) {
+      // Add the chip to the array and clear the input
+      const newChips = [...chips, chipValue]
+      setChips(newChips)
+      setTag("");
     }
   }
 
@@ -92,9 +106,14 @@ export default function ChipInput({
           name={name}
           type="text"
           placeholder={placeholder}
-          onKeyDown={handleKeyDown}
-          className="form-style w-full"
+          // onKeyDown={handleKeyDown}
+          onChange={changeHandler}
+          value={tagname} 
+          className=" form-style w-full"
         />
+        <div className="w-full flex justify-end mt-2">
+          <button onClick={ClickHandler} className="bg-yellow-50 text-black font-bold px-4 py-1 rounded-md hover:scale-95 transition-all duration-200">Insert Tag</button>
+        </div>
       </div>
       {/* Render an error message if the input is required and not filled */}
       {errors[name] && (
