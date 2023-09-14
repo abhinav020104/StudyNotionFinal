@@ -196,7 +196,7 @@ export default function CoursesTable({ courses, setCourses }) {
                         </p>
                       )}
                       <div className="flex mb-5 gap-5">
-                      <button
+                      {/* <button
                     disabled={loading}
                     onClick={() => {
                       navigate(`/dashboard/edit-course/${course._id}`)
@@ -208,7 +208,7 @@ export default function CoursesTable({ courses, setCourses }) {
                       Edit
                       <FiEdit2 size={20} />
                     </div>
-                  </button>
+                  </button> */}
                   <button
                     disabled={loading}
                     onClick={() => {
