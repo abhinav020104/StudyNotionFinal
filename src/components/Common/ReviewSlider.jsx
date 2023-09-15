@@ -53,7 +53,7 @@ function ReviewSlider() {
           {reviews.map((review, i) => {
             return (
               <SwiperSlide key={i} className="w-full">
-                <div className="  bg-richblack-800 px-2 py-1 text-[14px] text-richblack-25 text-center rounded-md hover:scale-95 transition-all duration-500">
+                <div className="  bg-richblack-800 px-2 py-1 text-[14px] w-[300px] text-richblack-25 text-center rounded-md ">
                   <div className="">
                     <div className="w-full flex justify-center">
                     <img
@@ -103,7 +103,7 @@ function ReviewSlider() {
               </SwiperSlide>
             )
           })}
-          {/* <SwiperSlide>Slide 1</SwiperSlide> */}
+          
         </Swiper>
       </div>
     </div>
