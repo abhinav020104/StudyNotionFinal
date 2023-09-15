@@ -53,8 +53,9 @@ function ReviewSlider() {
           {reviews.map((review, i) => {
             return (
               <SwiperSlide key={i} className="w-full">
-                <div className="  bg-richblack-800 p-3 text-[14px] text-richblack-25 flex gap-4 justify-center">
+                <div className="  bg-richblack-800 px-2 py-1 text-[14px] text-richblack-25 text-center rounded-md hover:scale-95 transition-all duration-500">
                   <div className="">
+                    <div className="w-full flex justify-center">
                     <img
                       src={
                         review?.user?.image
@@ -62,11 +63,12 @@ function ReviewSlider() {
                           : `https://api.dicebear.com/5.x/initials/svg?seed=${review?.user?.firstName} ${review?.user?.lastName}`
                       }
                       alt=""
-                      className="h-9 w-9 rounded-full object-cover"
+                      className="h-9 w-9 rounded-full object-cover "
                     />
+                    </div>
                     <div className="">
                       <h1 className="font-semibold text-richblack-5">{`${review?.user?.firstName} ${review?.user?.lastName}`}</h1>
-                      <h2 className="text-[12px] font-medium text-richblack-500">
+                      <h2 className="text-[12px] font-medium text-richblack-500 mb-4">
                         {review?.course?.courseName}
                       </h2>
                     </div>
@@ -80,6 +82,7 @@ function ReviewSlider() {
                           .join(" ")} ...`
                       : `${review?.review}`}
                   </p>
+                  <div className="w-full flex justify-center">
                   <div className="flex items-center gap-2 ">
                     <h3 className="font-semibold text-yellow-100">
                       {review.rating.toFixed(1)}
@@ -93,6 +96,7 @@ function ReviewSlider() {
                       emptyIcon={<FaStar />}
                       fullIcon={<FaStar />}
                     />
+                  </div>
                   </div>
                   </div>
                 </div>
