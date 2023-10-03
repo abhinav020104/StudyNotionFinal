@@ -230,7 +230,6 @@ exports.getAllCourses = async (req, res) => {
     })
   }
 }
-// Get One Single Course Details
 // exports.getCourseDetails = async (req, res) => {
 //   try {
 //     const { courseId } = req.body
@@ -281,7 +280,7 @@ exports.getAllCourses = async (req, res) => {
 //       message: error.message,
 //     })
 //   }
-// }
+// }  
 exports.getCourseDetails = async (req, res) => {
   try {
     const { courseId } = req.body
