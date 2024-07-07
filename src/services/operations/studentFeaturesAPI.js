@@ -47,7 +47,6 @@ export async function BuyCourse(
       return
     }
 
-    // Initiating the Order in Backend
     const orderResponse = await apiConnector(
       "POST",
       COURSE_PAYMENT_API,
@@ -64,7 +63,7 @@ export async function BuyCourse(
     }
     console.log("PAYMENT RESPONSE FROM BACKEND............", orderResponse.data)
 
-    // Opening the Razorpay SDK
+
     const options = {
       key: process.env.RAZORPAY_KEY,
       currency: orderResponse.data.data.currency,
@@ -97,7 +96,7 @@ export async function BuyCourse(
   toast.dismiss(toastId)
 }
 
-// Verify the Payment
+
 async function verifyPayment(bodyData, token, navigate, dispatch) {
   const toastId = toast.loading("Verifying Payment...")
   dispatch(setPaymentLoading(true))
@@ -123,7 +122,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
   dispatch(setPaymentLoading(false))
 }
 
-// Send the Payment Success Email
+
 async function sendPaymentSuccessEmail(response, amount, token) {
   try {
     await apiConnector(
