@@ -1,4 +1,4 @@
-const BASE_URL = "http://studynotion-backend.codewithabhinav.online/api/v1"
+const BASE_URL = "https://studynotion-backend.codewithabhinav.online/api/v1"
 
 // AUTH ENDPOINTS
 export const endpoints = {
