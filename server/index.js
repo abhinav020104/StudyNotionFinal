@@ -25,7 +25,7 @@ database.connect();
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: "https://studynotion.codewithabhinav.in" }));
+app.use(cors());
 app.use(
 	fileUpload({
 		useTempFiles: true,
